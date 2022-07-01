@@ -19,6 +19,30 @@ const onClickAdd = () => {
   completeButton.addEventListener("click", () => {
     //押された完了ボタンの処理
     deleteFromIncompleteList(completeButton.parentNode);
+
+    //完了リストに追加する要素
+    const addTarget = completeButton.parentNode;
+
+    //todo内容テキストを取得
+    const text = addTarget.firstElementChild.innerText;
+
+    //div以下を初期化
+    addTarget.textContent = null;
+
+    //liタグ作成
+    const li = document.createElement("li");
+    li.innerText = text;
+
+    //button作成
+    const backButton = document.createElement("button");
+    backButton.innerText = "back";
+
+    //divタグの子要素に各要素に設定
+    addTarget.appendChild(li);
+    addTarget.appendChild(backButton);
+
+    //完了リストに追加
+    document.getElementById("complete-list").appendChild(addTarget);
   });
 
   //button(削除)タグ生成
